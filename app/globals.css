@@ -28,8 +28,64 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(10vw, -10vh) scale(1.1); }
+  66% { transform: translate(-5vw, 15vh) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
 .animate-marquee {
   animation: marquee 40s linear infinite;
   display: flex;
   width: max-content;
+}
+
+.animate-blob {
+  animation: blob 15s infinite alternate ease-in-out;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+
+.bg-mesh-dark {
+  background-color: #050505;
+}
+
+@keyframes starScroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 -1000px; }
+}
+
+.bg-stars-1 {
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='white' opacity='0.8'/%3E%3Ccircle cx='200' cy='150' r='1.5' fill='white' opacity='0.6'/%3E%3Ccircle cx='350' cy='300' r='1' fill='%23E5FF00' opacity='0.6'/%3E%3Ccircle cx='120' cy='320' r='1.5' fill='white' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.bg-stars-2 {
+  background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='250' r='1.5' fill='white' opacity='0.5'/%3E%3Ccircle cx='250' cy='50' r='1' fill='white' opacity='0.7'/%3E%3Ccircle cx='80' cy='100' r='1' fill='%23E5FF00' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+.bg-stars-3 {
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='150' r='2' fill='white' opacity='0.3'/%3E%3Ccircle cx='180' cy='80' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='100' cy='30' r='1' fill='%23E5FF00' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.animate-stars-slow {
+  animation: starScroll 150s linear infinite;
+}
+
+.animate-stars-medium {
+  animation: starScroll 100s linear infinite;
+}
+
+.animate-stars-fast {
+  animation: starScroll 60s linear infinite;
 }

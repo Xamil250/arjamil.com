@@ -51,10 +51,31 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen gradient-bg text-white selection:bg-[#E5FF00]/30 selection:text-[#E5FF00] overflow-x-hidden pt-12 pb-24 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-mesh-dark relative text-white selection:bg-[#E5FF00]/30 selection:text-[#E5FF00] overflow-x-hidden pt-12 pb-24 px-4 sm:px-6 lg:px-8">
       
+      {/* Moving Star Layers (Fixed so they move endlessly regardless of scroll) */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none -z-20">
+        <div className="absolute inset-0 w-full h-full bg-stars-1 animate-stars-slow opacity-60"></div>
+        <div className="absolute inset-0 w-full h-full bg-stars-2 animate-stars-medium opacity-80"></div>
+        <div className="absolute inset-0 w-full h-full bg-stars-3 animate-stars-fast opacity-100"></div>
+      </div>
+
+      {/* 3D Animated Background Placed Under All Content (Absolute to Move with Scroll) */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        {/* Glow Blob 1: Top Hero Area */}
+        <div className="absolute top-[5%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#E5FF00]/10 blur-[130px] animate-blob mix-blend-screen"></div>
+        {/* Glow Blob 2: Ecosystem Strategy Area */}
+        <div className="absolute top-[25%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-white/5 blur-[120px] animate-blob animation-delay-2000 mix-blend-screen"></div>
+        {/* Glow Blob 3: Blogs / Knowledge Base Area */}
+        <div className="absolute top-[50%] left-[5%] w-[55vw] h-[55vw] rounded-full bg-[#E5FF00]/10 blur-[150px] animate-blob animation-delay-4000 mix-blend-screen"></div>
+        {/* Glow Blob 4: Portfolio Area */}
+        <div className="absolute top-[75%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-white/5 blur-[130px] animate-blob animation-delay-6000 mix-blend-screen"></div>
+        {/* Glow Blob 5: Footer Area */}
+        <div className="absolute bottom-[2%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[#E5FF00]/15 blur-[160px] animate-blob mix-blend-screen"></div>
+      </div>
+
       {/* Navigation - Added from design theme */}
-      <nav className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
+      <nav className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
         <div className="text-2xl font-black tracking-tighter italic">
           A.R.<span className="accent-text tracking-normal">JAMIL</span>
         </div>
@@ -118,57 +139,57 @@ export default function Home() {
           </div>
         </section>
 
-        {/* === BRAND LOGOS MARQUEE === */}
-        <section className="w-full py-10 border-y border-white/5 bg-white/[0.02] relative my-8">
+          {/* === BRAND LOGOS MARQUEE === */}
+        <section className="w-full py-10 border-y border-white/5 bg-black/40 backdrop-blur-xl relative my-8 shadow-[0_0_50px_rgba(229,255,0,0.03)] z-10">
           <div className="absolute inset-0 bg-[#E5FF00]/[0.01] pointer-events-none" />
           <div className="w-full marquee-mask overflow-hidden flex">
             <div className="animate-marquee items-center gap-16 md:gap-24 pr-16 md:pr-24">
               {[...Array(2)].map((_, groupIndex) => (
                 <div key={groupIndex} className="flex items-center gap-16 md:gap-24">
                   <div className="flex items-center group cursor-default">
-                    <div className="text-2xl font-black tracking-tight opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
+                    <div className="text-2xl font-black tracking-tight opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="text-white">Bombay Bites</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-2xl font-bold font-serif italic tracking-tight opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
+                    <div className="text-2xl font-bold font-serif italic tracking-tight opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="text-white">Co.lab Creation</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-xl font-bold tracking-[0.2em] uppercase opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
+                    <div className="text-xl font-bold tracking-[0.2em] uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="text-white">WearBloom</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-3xl font-black tracking-tighter opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
+                    <div className="text-3xl font-black tracking-tighter opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="text-[#E5FF00] border-b-4 border-[#E5FF00] leading-none">CJ</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-2xl font-light tracking-wide uppercase opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
-                      <span className="text-white border-l-2 border-white/20 pl-4 py-1">Deshi Fashion<br/><span className="text-[10px] font-bold tracking-widest text-gray-400">LTD</span></span>
+                    <div className="text-2xl font-light tracking-wide uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                      <span className="text-white border-l-2 border-white/20 pl-4 py-1">Deshi Fashion<br/><span className="text-[10px] font-bold tracking-widest text-[#E5FF00]">LTD</span></span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-xl font-bold tracking-[0.3em] uppercase opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
-                      <span className="text-white font-mono">Student Cribs</span>
+                    <div className="text-xl font-bold tracking-[0.3em] uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                      <span className="text-[#E5FF00] font-mono">Student Cribs</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-2xl font-black tracking-tighter uppercase opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
+                    <div className="text-2xl font-black tracking-tighter uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="text-[#E5FF00]">SULTAN&apos;S</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default">
-                    <div className="text-2xl font-black italic tracking-tighter uppercase opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500">
+                    <div className="text-2xl font-black italic tracking-tighter uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="text-white border-2 border-white/20 p-1 px-2 leading-none uppercase">Mom&apos;z Kitchen</span>
                     </div>
                   </div>
                   <div className="flex items-center group cursor-default relative">
-                    <div className="text-xl font-medium tracking-[0.2em] uppercase opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-opacity duration-500 flex items-center">
-                      <Rocket className="w-5 h-5 mr-3 text-[#E5FF00] hidden group-hover:block" />
-                      <span className="text-white">Growvella</span>
+                    <div className="text-xl font-medium tracking-[0.2em] uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-500 flex items-center">
+                      <Rocket className="w-5 h-5 mr-3 text-[#E5FF00] hidden group-hover:block transition-all" />
+                      <span className="text-white group-hover:text-[#E5FF00]">Growvella</span>
                     </div>
                   </div>
                 </div>
@@ -390,62 +411,68 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               
               {/* Image 1: Sultan's Logo */}
-              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg">
-                <Image src="/sultans_logo.png" fill alt="Brand Identity" referrerPolicy="no-referrer" className="object-cover object-center grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-                  <h4 className="text-lg font-black uppercase tracking-wider text-white">Brand Identity</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1">Sultan&apos;s Events</p>
+              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg hover:-translate-y-2 transition-transform duration-500 hover:shadow-[0_0_30px_rgba(229,255,0,0.1)] bg-white/5">
+                <div className="absolute inset-0 bg-[#E5FF00]/20 opacity-0 group-hover:opacity-10 transition-opacity z-10 pointer-events-none mix-blend-overlay"></div>
+                <Image unoptimized src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600" fill alt="Brand Identity" referrerPolicy="no-referrer" className="object-cover object-center transition-all duration-700 hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-30">
+                  <h4 className="text-lg font-black uppercase tracking-wider text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Brand Identity</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Sultan&apos;s Events</p>
                 </div>
               </div>
 
               {/* Image 2: Sultan's Event */}
-              <div className="relative group h-64 md:h-[400px] md:col-span-1 lg:col-span-2 overflow-hidden border border-white/10 rounded-lg">
-                <Image src="/sultans_event.png" fill alt="Event Photography" referrerPolicy="no-referrer" className="object-cover object-center grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-                  <h4 className="text-lg font-black uppercase tracking-wider text-white">Event Photography</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1">Sultan&apos;s Events</p>
+              <div className="relative group h-64 md:h-[400px] md:col-span-1 lg:col-span-2 overflow-hidden border border-white/10 rounded-lg hover:-translate-y-2 transition-transform duration-500 hover:shadow-[0_0_30px_rgba(229,255,0,0.1)] bg-white/5">
+                <div className="absolute inset-0 bg-[#E5FF00]/20 opacity-0 group-hover:opacity-10 transition-opacity z-10 pointer-events-none mix-blend-overlay"></div>
+                <Image unoptimized src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1600" fill alt="Event Photography" referrerPolicy="no-referrer" className="object-cover object-center transition-all duration-700 hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-30">
+                  <h4 className="text-lg font-black uppercase tracking-wider text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Event Photography</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Sultan&apos;s Events</p>
                 </div>
               </div>
 
               {/* Image 3: Mom'z Kitchen Wok */}
-              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg">
-                <Image src="/momz_wok.png" fill alt="Product Direction" referrerPolicy="no-referrer" className="object-cover object-center grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-                  <h4 className="text-lg font-black uppercase tracking-wider text-white">Product Direction</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1">Mom&apos;z Kitchen</p>
+              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg hover:-translate-y-2 transition-transform duration-500 hover:shadow-[0_0_30px_rgba(229,255,0,0.1)] bg-white/5">
+                <div className="absolute inset-0 bg-[#E5FF00]/20 opacity-0 group-hover:opacity-10 transition-opacity z-10 pointer-events-none mix-blend-overlay"></div>
+                <Image unoptimized src="https://images.unsplash.com/photo-1555126634-323283e090fa?q=80&w=1600" fill alt="Product Direction" referrerPolicy="no-referrer" className="object-cover object-center transition-all duration-700 hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-30">
+                  <h4 className="text-lg font-black uppercase tracking-wider text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Product Direction</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Mom&apos;z Kitchen</p>
                 </div>
               </div>
 
               {/* Image 4: Mom'z Kitchen Drink */}
-              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg">
-                <Image src="/momz_drink.png" fill alt="Campaign Design" referrerPolicy="no-referrer" className="object-cover object-center grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-                  <h4 className="text-lg font-black uppercase tracking-wider text-white">Campaign Design</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1">Mom&apos;z Kitchen</p>
+              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg hover:-translate-y-2 transition-transform duration-500 hover:shadow-[0_0_30px_rgba(229,255,0,0.1)] bg-white/5">
+                <div className="absolute inset-0 bg-[#E5FF00]/20 opacity-0 group-hover:opacity-10 transition-opacity z-10 pointer-events-none mix-blend-overlay"></div>
+                <Image unoptimized src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1600" fill alt="Campaign Design" referrerPolicy="no-referrer" className="object-cover object-center transition-all duration-700 hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-30">
+                  <h4 className="text-lg font-black uppercase tracking-wider text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Campaign Design</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Mom&apos;z Kitchen</p>
                 </div>
               </div>
 
               {/* Image 5: DMU Stall 1 */}
-              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg">
-                <Image src="/dmu_stall1.jpeg" fill alt="Student Ecosystem" referrerPolicy="no-referrer" className="object-cover object-center grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-                  <h4 className="text-lg font-black uppercase tracking-wider text-white">Student Ecosystem</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1">DMU Innovations</p>
+              <div className="relative group h-64 md:h-[400px] md:col-span-1 overflow-hidden border border-white/10 rounded-lg hover:-translate-y-2 transition-transform duration-500 hover:shadow-[0_0_30px_rgba(229,255,0,0.1)] bg-white/5">
+                <div className="absolute inset-0 bg-[#E5FF00]/20 opacity-0 group-hover:opacity-10 transition-opacity z-10 pointer-events-none mix-blend-overlay"></div>
+                <Image unoptimized src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1600" fill alt="Student Ecosystem" referrerPolicy="no-referrer" className="object-cover object-center transition-all duration-700 hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-30">
+                  <h4 className="text-lg font-black uppercase tracking-wider text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Student Ecosystem</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">DMU Innovations</p>
                 </div>
               </div>
 
               {/* Image 6: DMU Stall 2 */}
-              <div className="relative group h-64 md:h-[400px] md:col-span-1 lg:col-span-3 overflow-hidden border border-white/10 rounded-lg">
-                <Image src="/dmu_stall2.jpeg" fill alt="Community Events" referrerPolicy="no-referrer" className="object-cover object-center grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-                  <h4 className="text-lg font-black uppercase tracking-wider text-white">Community Events</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1">DMU Innovations</p>
+              <div className="relative group h-64 md:h-[400px] md:col-span-1 lg:col-span-3 overflow-hidden border border-white/10 rounded-lg hover:-translate-y-2 transition-transform duration-500 hover:shadow-[0_0_30px_rgba(229,255,0,0.1)] bg-white/5">
+                <div className="absolute inset-0 bg-[#E5FF00]/20 opacity-0 group-hover:opacity-10 transition-opacity z-10 pointer-events-none mix-blend-overlay"></div>
+                <Image unoptimized src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1600" fill alt="Community Events" referrerPolicy="no-referrer" className="object-cover object-center transition-all duration-700 hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none z-30">
+                  <h4 className="text-lg font-black uppercase tracking-wider text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">Community Events</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#E5FF00] mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">DMU Innovations</p>
                 </div>
               </div>
 
