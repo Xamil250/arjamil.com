@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .gradient-bg {
+    background-color: #0A0A0A;
+    background-image: radial-gradient(circle at top right, #120D26 0%, #0A0A0A 60%);
+  }
+  .glass {
+    @apply bg-[#141414]/70 backdrop-blur-md border border-[#E5FF00]/15;
+  }
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-[#1A1A1A]/90 hover:border-[#E5FF00]/30 hover:-translate-y-1;
+  }
+  .accent-text {
+    @apply text-[#E5FF00];
+  }
+  .accent-bg {
+    @apply bg-[#E5FF00];
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
