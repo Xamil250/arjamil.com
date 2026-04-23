@@ -22,7 +22,11 @@ import {
   ChefHat,
   Send,
   Loader2,
-  CheckCircle2
+  CheckCircle2,
+  BookOpen,
+  FileText,
+  Download,
+  ArrowRight
 } from "lucide-react";
 
 export default function Home() {
@@ -58,10 +62,11 @@ export default function Home() {
           <a href="#ecosystem" className="hover:text-[#E5FF00] transition-colors">Ecosystem</a>
           <a href="#authority" className="hover:text-[#E5FF00] transition-colors">Authority</a>
           <a href="#value" className="hover:text-[#E5FF00] transition-colors">Strategy</a>
+          <a href="#content" className="hover:text-[#E5FF00] transition-colors">Insights</a>
           <a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a>
         </div>
         <div className="text-[10px] text-gray-500 font-mono tracking-widest text-center md:text-right hidden md:block">
-          DMU INNOVATION CENTRE | LEICESTER, UK
+          BASED IN LEICESTER, UK
         </div>
       </nav>
 
@@ -82,7 +87,7 @@ export default function Home() {
             <div className="flex items-center space-x-3 text-lg md:text-xl text-gray-400 font-light max-w-2xl leading-relaxed">
               <MapPin className="text-[#E5FF00] w-5 h-5 flex-shrink-0" />
               <p>
-                Architecting creative strategy and marketing at the <span className="text-white border-b border-white/20 italic font-medium">DMU Innovation Centre</span>, Leicester, UK.
+                Architecting creative strategy and marketing. <span className="text-white border-b border-white/20 italic font-medium">Leicester based.</span>
               </p>
             </div>
             <div className="flex items-start space-x-3 text-sm text-gray-500 font-light max-w-2xl leading-relaxed">
@@ -96,15 +101,15 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <a 
-              href="https://wa.me/447000000000" 
+              href="https://wa.me/447342398858" 
               target="_blank" rel="noopener noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center px-8 py-4 accent-bg text-black font-bold rounded-sm transition-opacity hover:opacity-90 uppercase text-xs tracking-widest"
+              className="w-full sm:w-auto flex items-center justify-center px-8 py-4 accent-bg text-black font-bold rounded-sm transition-opacity hover:opacity-90 uppercase text-xs tracking-widest text-center"
             >
               <PhoneCall className="w-4 h-4 mr-2" />
-              Connect on WhatsApp
+              Book 1:1 Consultation
             </a>
             <a 
-              href="mailto:jamilmdabdurrahman@gmail.com" 
+              href="mailto:hello@arjamil.com" 
               className="w-full sm:w-auto flex items-center justify-center px-8 py-4 border border-white/20 text-white font-bold rounded-sm transition-all hover:bg-white hover:text-black uppercase text-xs tracking-widest text-center"
             >
               <Mail className="w-4 h-4 mr-2" />
@@ -309,6 +314,72 @@ export default function Home() {
             </div>
           </div>
 
+          <div id="content" className="md:col-span-12 py-12 border-t border-white/10 relative">
+            <div className="mb-10">
+              <h2 className="text-[10px] font-bold tracking-widest text-[#E5FF00] uppercase mb-2">Knowledge Base</h2>
+              <h3 className="text-3xl font-black tracking-tight uppercase">Blogs &amp; E-Books</h3>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              
+              {/* E-Book Highlight */}
+              <div className="relative group lg:col-span-1 overflow-hidden border border-[#E5FF00]/20 bg-[#E5FF00]/5 rounded-lg p-6 flex flex-col justify-between hover:bg-[#E5FF00]/10 transition-colors">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <BookOpen className="w-24 h-24 text-[#E5FF00]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="inline-block px-2 py-1 bg-[#E5FF00]/20 text-[#E5FF00] border border-[#E5FF00]/30 rounded text-[10px] uppercase tracking-widest font-bold mb-4">
+                    Featured E-Book
+                  </div>
+                  <h4 className="text-xl font-black text-white leading-tight mb-2">The Stealth Founder&apos;s Blueprint</h4>
+                  <p className="text-sm text-gray-400 font-light mb-6">Learn how to scale local SMEs and student-focused startups without operational bloat. A complete guide to AI-augmented growth.</p>
+                </div>
+                <a href="/ebook/stealth-founder-blueprint" className="relative z-10 flex items-center justify-center w-full py-3 bg-[#E5FF00] text-black font-bold uppercase tracking-widest text-[10px] rounded hover:opacity-90 transition-opacity">
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Now
+                </a>
+              </div>
+
+              {/* Blogs Column */}
+              <div className="flex flex-col gap-6 lg:col-span-2">
+                <a href="/blog/student-housing-guide" className="group flex flex-col sm:flex-row gap-6 p-6 border border-white/10 bg-white/5 rounded-lg hover:border-white/30 transition-colors">
+                  <div className="w-full sm:w-1/3 h-32 relative rounded-md overflow-hidden bg-black/50 border border-white/5 shrink-0 flex items-center justify-center">
+                    <FileText className="w-10 h-10 text-gray-500 group-hover:text-[#E5FF00] transition-colors" />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Student Guidance</span>
+                      <span className="text-[10px] text-gray-600 font-mono">• 5 min read</span>
+                    </div>
+                    <h4 className="text-lg font-bold text-white group-hover:text-[#E5FF00] transition-colors mb-2">The Ultimate Guide to £0 Deposit Housing for Students</h4>
+                    <p className="text-xs text-gray-400 font-light line-clamp-2 mb-4">Navigating the complexities of university housing in the UK, saving money, and protecting your renting rights.</p>
+                    <div className="flex items-center text-[10px] font-bold uppercase tracking-widest text-[#E5FF00]">
+                      Read Article <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </a>
+
+                <a href="/blog/ai-sme-scaling" className="group flex flex-col sm:flex-row gap-6 p-6 border border-white/10 bg-white/5 rounded-lg hover:border-white/30 transition-colors">
+                  <div className="w-full sm:w-1/3 h-32 relative rounded-md overflow-hidden bg-black/50 border border-white/5 shrink-0 flex items-center justify-center">
+                    <FileText className="w-10 h-10 text-gray-500 group-hover:text-[#E5FF00] transition-colors" />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Marketing Strategy</span>
+                      <span className="text-[10px] text-gray-600 font-mono">• 7 min read</span>
+                    </div>
+                    <h4 className="text-lg font-bold text-white group-hover:text-[#E5FF00] transition-colors mb-2">AI-Augmented Content Strategy for Local SMEs</h4>
+                    <p className="text-xs text-gray-400 font-light line-clamp-2 mb-4">How to leverage AI to drastically enhance your local reach, personalize marketing, and drive authentic community engagement.</p>
+                    <div className="flex items-center text-[10px] font-bold uppercase tracking-widest text-[#E5FF00]">
+                      Read Article <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
           <div id="portfolio" className="md:col-span-12 py-12 border-t border-white/10 relative">
             {/* === CREATIVE WORKS & PHOTOGRAPHY === */}
             <div className="mb-10">
@@ -392,20 +463,33 @@ export default function Home() {
               <div className="flex flex-col justify-between">
                 <div>
                   <h4 className="text-3xl md:text-5xl font-black mb-4 tracking-tight uppercase">Fancy a coffee <br/>in Leicester?</h4>
-                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mb-10">Let&apos;s talk strategy and creative growth.</p>
+                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mb-6">Let&apos;s talk strategy and creative growth.</p>
+                  
+                  <div className="flex flex-col gap-4 mb-10">
+                    <a href="mailto:hello@arjamil.com" className="flex items-center text-sm font-light text-gray-300 hover:text-[#E5FF00] transition-colors w-fit">
+                      <Mail className="w-4 h-4 mr-3 text-[#E5FF00]/70" />
+                      hello@arjamil.com
+                    </a>
+                    <a href="https://wa.me/447342398858" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm font-light text-gray-300 hover:text-[#E5FF00] transition-colors w-fit">
+                      <PhoneCall className="w-4 h-4 mr-3 text-[#E5FF00]/70" />
+                      +44 734 239 8858 <span className="text-[10px] ml-3 border border-white/10 px-2 py-0.5 rounded-full text-gray-400 uppercase tracking-widest font-bold bg-white/5">WhatsApp / Call</span>
+                    </a>
+                  </div>
                   
                   <div className="flex flex-wrap gap-3 text-xs font-bold text-gray-400 uppercase tracking-widest mb-10 md:mb-0">
                     {[ 
-                      { icon: Linkedin, href: "#", name: "LI" },
-                      { icon: Instagram, href: "#", name: "IG" },
-                      { icon: Twitter, href: "#", name: "X" },
-                      { icon: Facebook, href: "#", name: "FB" },
-                      { icon: Youtube, href: "#", name: "YT" },
-                      { icon: Ghost, href: "#", name: "SC" },
-                      { icon: Pin, href: "#", name: "PIN" },
+                      { icon: PhoneCall, href: "tel:+447342398858", name: "Phone", hoverClass: "hover:bg-[#E5FF00]/20 hover:text-[#E5FF00] hover:border-[#E5FF00]/50" },
+                      { icon: Linkedin, href: "https://www.linkedin.com/in/arjamil", name: "LinkedIn", hoverClass: "hover:bg-[#0A66C2]/20 hover:text-[#0A66C2] hover:border-[#0A66C2]/50" },
+                      { icon: Instagram, href: "https://www.instagram.com/ar.xamil", name: "Instagram", hoverClass: "hover:bg-[#E1306C]/20 hover:text-[#E1306C] hover:border-[#E1306C]/50" },
+                      { icon: Twitter, href: "https://www.x.com/arxamil", name: "X", hoverClass: "hover:bg-white/20 hover:text-white hover:border-white/50" },
+                      { icon: Facebook, href: "https://www.facebook.com/ar.Jamilofficial", name: "Facebook", hoverClass: "hover:bg-[#1877F2]/20 hover:text-[#1877F2] hover:border-[#1877F2]/50" },
+                      { icon: Youtube, href: "https://www.youtube.com/@arjamil", name: "YouTube", hoverClass: "hover:bg-[#FF0000]/20 hover:text-[#FF0000] hover:border-[#FF0000]/50" },
+                      { icon: Ghost, href: "https://www.snapchat.com/arxamil", name: "Snapchat", hoverClass: "hover:bg-[#FFFC00]/20 hover:text-[#FFFC00] hover:border-[#FFFC00]/50" },
+                      { icon: Pin, href: "https://www.pinterest.com/arxamill", name: "Pinterest", hoverClass: "hover:bg-[#E60023]/20 hover:text-[#E60023] hover:border-[#E60023]/50" },
+                      { icon: () => <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.23-.9 4.45-2.43 6.08-1.5 1.58-3.66 2.5-5.88 2.57-2.22.08-4.48-.44-6.26-1.74-1.77-1.3-3-3.32-3.31-5.5-.32-2.18.15-4.46 1.34-6.27 1.18-1.8 3.07-3.08 5.18-3.46 2.1-.38 4.31-.15 6.27.81v4.32c-1.39-.74-3.13-.96-4.66-.46-1.52.5-2.73 1.73-3.18 3.25-.45 1.53-.13 3.23.86 4.47.98 1.25 2.65 1.84 4.23 1.57 1.58-.26 2.94-1.34 3.56-2.79.62-1.46.66-3.13.6-4.7V0h3.51z"/></svg>, href: "https://www.tiktok.com/@ar_xamil", name: "TikTok", hoverClass: "hover:bg-[#00f2fe]/20 hover:text-[#00f2fe] hover:border-[#00f2fe]/50" },
                     ].map((social, i) => (
-                      <a key={i} href={social.href} aria-label={social.name} className="flex items-center justify-center w-10 h-10 glass rounded-md hover:text-[#E5FF00] hover:bg-white/10 hover:border-[#E5FF00]/40 transition-all">
-                        <social.icon className="w-5 h-5" />
+                      <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className={`flex items-center justify-center w-10 h-10 glass rounded-md transition-all duration-300 ${social.hoverClass}`}>
+                        <social.icon className="w-5 h-5 flex-shrink-0" />
                       </a>
                     ))}
                   </div>
