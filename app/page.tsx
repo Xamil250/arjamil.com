@@ -123,27 +123,8 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="relative py-12 md:py-24 flex flex-col items-start justify-center overflow-hidden rounded-2xl md:rounded-3xl p-6 md:p-10 border border-white/5 bg-black/20 backdrop-blur-xs"
+          className="py-12 md:py-24 flex flex-col items-start justify-center"
         >
-          {/* Hero Portrait Background with 30% Opacity */}
-          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden rounded-2xl md:rounded-3xl">
-            <div className="absolute right-0 top-0 bottom-0 w-full md:w-[65%] lg:w-[55%] h-full opacity-30">
-              <Image 
-                src="/hero-portrait.jpg" 
-                alt="A.R. Jamil Portrait" 
-                fill 
-                priority
-                unoptimized
-                referrerPolicy="no-referrer" 
-                className="object-cover object-top md:object-center filter grayscale contrast-110"
-              />
-              {/* Gradient masks to feather seamlessly into the dark background and ensure crisp typography */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 md:via-[#0A0A0A]/40 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/80" />
-              <div className="absolute inset-0 bg-[#E5FF00]/5 mix-blend-overlay" />
-            </div>
-          </div>
-
           <div className="inline-block px-3 py-1 bg-[#1A1A1A] border border-white/10 rounded-full text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-6">
             Founder • Strategist • AI-Augmented
           </div>
@@ -271,55 +252,55 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {/* Card 1 */}
-              <div className="glass p-6 rounded-lg relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono">01</div>
+              <div className="glass p-6 rounded-lg relative overflow-hidden group transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:border-[#E5FF00]/40 hover:bg-[#181818]/95 hover:shadow-[0_12px_30px_-8px_rgba(229,255,0,0.15)] cursor-pointer">
+                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono group-hover:opacity-60 transition-opacity">01</div>
                 <div className="mb-6">
-                  <ChefHat className="text-[#E5FF00] w-6 h-6" />
+                  <ChefHat className="text-[#E5FF00] w-6 h-6 transform group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider italic">Mom&apos;z Kitchen 2.0</h3>
-                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide">
+                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider italic group-hover:text-white transition-colors">Mom&apos;z Kitchen 2.0</h3>
+                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide group-hover:text-gray-300 transition-colors">
                   Innovation Model &bull; UK Pilot Launching Soon
                 </p>
-                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest">Founder</span></div>
+                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest group-hover:border-[#E5FF00]/40 group-hover:text-[#E5FF00] transition-colors">Founder</span></div>
               </div>
 
               {/* Card 2 */}
-              <div className="glass p-6 rounded-lg relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono">02</div>
+              <div className="glass p-6 rounded-lg relative overflow-hidden group transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:border-[#E5FF00]/40 hover:bg-[#181818]/95 hover:shadow-[0_12px_30px_-8px_rgba(229,255,0,0.15)] cursor-pointer">
+                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono group-hover:opacity-60 transition-opacity">02</div>
                 <div className="mb-6">
-                  <Rocket className="text-[#E5FF00] w-6 h-6" />
+                  <Rocket className="text-[#E5FF00] w-6 h-6 transform group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider">Growvella</h3>
-                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide">
+                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider group-hover:text-white transition-colors">Growvella</h3>
+                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide group-hover:text-gray-300 transition-colors">
                   AI Marketing &bull; UK Pilot Launching Soon
                 </p>
-                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest">Founder</span></div>
+                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest group-hover:border-[#E5FF00]/40 group-hover:text-[#E5FF00] transition-colors">Founder</span></div>
               </div>
 
               {/* Card 3 */}
-              <div className="glass p-6 rounded-lg relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono">03</div>
+              <div className="glass p-6 rounded-lg relative overflow-hidden group transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:border-[#E5FF00]/40 hover:bg-[#181818]/95 hover:shadow-[0_12px_30px_-8px_rgba(229,255,0,0.15)] cursor-pointer">
+                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono group-hover:opacity-60 transition-opacity">03</div>
                 <div className="mb-6">
-                  <Sparkles className="text-[#E5FF00] w-6 h-6" />
+                  <Sparkles className="text-[#E5FF00] w-6 h-6 transform group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider">Sultan&apos;s</h3>
-                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide">
+                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider group-hover:text-white transition-colors">Sultan&apos;s</h3>
+                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide group-hover:text-gray-300 transition-colors">
                   Marketing & Creative Strategist
                 </p>
-                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest">Strategist</span></div>
+                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest group-hover:border-[#E5FF00]/40 group-hover:text-[#E5FF00] transition-colors">Strategist</span></div>
               </div>
 
               {/* Card 4 */}
-              <div className="glass p-6 rounded-lg relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono">04</div>
+              <div className="glass p-6 rounded-lg relative overflow-hidden group transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:border-[#E5FF00]/40 hover:bg-[#181818]/95 hover:shadow-[0_12px_30px_-8px_rgba(229,255,0,0.15)] cursor-pointer">
+                <div className="absolute top-0 right-0 p-3 accent-text text-[10px] opacity-20 font-bold font-mono group-hover:opacity-60 transition-opacity">04</div>
                 <div className="mb-6">
-                  <Building2 className="text-[#E5FF00] w-6 h-6" />
+                  <Building2 className="text-[#E5FF00] w-6 h-6 transform group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider">Student Cribs</h3>
-                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide">
+                <h3 className="font-bold text-sm mb-1 uppercase tracking-wider group-hover:text-white transition-colors">Student Cribs</h3>
+                <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-wide group-hover:text-gray-300 transition-colors">
                   High-Conversion Housing Campaigns
                 </p>
-                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest">Brand Manager</span></div>
+                <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest group-hover:border-[#E5FF00]/40 group-hover:text-[#E5FF00] transition-colors">Brand Manager</span></div>
               </div>
             </div>
           </motion.div>
