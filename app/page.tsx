@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 import { 
   Building2, 
   MapPin, 
@@ -26,13 +27,16 @@ import {
   BookOpen,
   FileText,
   Download,
-  ArrowRight
+  ArrowRight,
+  ExternalLink
 } from "lucide-react";
 
 export default function Home() {
   const [activeAudience, setActiveAudience] = useState<"smes" | "students">("smes");
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +50,22 @@ export default function Home() {
       // Reset form status after 3 seconds
       setTimeout(() => {
         setFormStatus("idle");
+      }, 3000);
+    }, 1500);
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterStatus("submitting");
+    
+    // Simulate API call for the newsletter / ebook download
+    setTimeout(() => {
+      setNewsletterStatus("success");
+      setNewsletterEmail("");
+      
+      // Reset form status after 3 seconds
+      setTimeout(() => {
+        setNewsletterStatus("idle");
       }, 3000);
     }, 1500);
   };
@@ -75,7 +95,12 @@ export default function Home() {
       </div>
 
       {/* Navigation - Added from design theme */}
-      <nav className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
+      <motion.nav 
+        initial={{ opacity: 0, y: -10 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-16 gap-4"
+      >
         <div className="text-2xl font-black tracking-tighter italic">
           A.R.<span className="accent-text tracking-normal">JAMIL</span>
         </div>
@@ -89,12 +114,36 @@ export default function Home() {
         <div className="text-[10px] text-gray-500 font-mono tracking-widest text-center md:text-right hidden md:block">
           BASED IN LEICESTER, UK
         </div>
-      </nav>
+      </motion.nav>
 
       <div className="relative z-10 max-w-6xl mx-auto">
         
         {/* === HERO SECTION === */}
-        <section className="py-12 md:py-24 flex flex-col items-start justify-center">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          className="relative py-12 md:py-24 flex flex-col items-start justify-center overflow-hidden rounded-2xl md:rounded-3xl p-6 md:p-10 border border-white/5 bg-black/20 backdrop-blur-xs"
+        >
+          {/* Hero Portrait Background with 30% Opacity */}
+          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden rounded-2xl md:rounded-3xl">
+            <div className="absolute right-0 top-0 bottom-0 w-full md:w-[65%] lg:w-[55%] h-full opacity-30">
+              <Image 
+                src="/hero-portrait.jpg" 
+                alt="A.R. Jamil Portrait" 
+                fill 
+                priority
+                unoptimized
+                referrerPolicy="no-referrer" 
+                className="object-cover object-top md:object-center filter grayscale contrast-110"
+              />
+              {/* Gradient masks to feather seamlessly into the dark background and ensure crisp typography */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 md:via-[#0A0A0A]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/80" />
+              <div className="absolute inset-0 bg-[#E5FF00]/5 mix-blend-overlay" />
+            </div>
+          </div>
+
           <div className="inline-block px-3 py-1 bg-[#1A1A1A] border border-white/10 rounded-full text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-6">
             Founder • Strategist • AI-Augmented
           </div>
@@ -105,29 +154,29 @@ export default function Home() {
           </h1>
 
           <div className="flex flex-col gap-4 mb-12">
-            <div className="flex items-center space-x-3 text-lg md:text-xl text-gray-400 font-light max-w-2xl leading-relaxed">
-              <MapPin className="text-[#E5FF00] w-5 h-5 flex-shrink-0" />
+            <div className="flex items-start space-x-3 text-lg md:text-xl text-gray-400 font-light max-w-3xl leading-relaxed">
+              <MapPin className="text-[#E5FF00] w-5 h-5 flex-shrink-0 mt-1" />
               <p>
-                Architecting creative strategy and marketing. <span className="text-white border-b border-white/20 italic font-medium">Leicester based.</span>
+                <span className="text-white italic font-medium">Creative strategy &amp; marketing.</span> 9 years in hospitality, last 4 in the UK. Building AI-augmented marketing platform designed for local SMEs. Delivering exponential reach without operational bloat.
               </p>
             </div>
             <div className="flex items-start space-x-3 text-sm text-gray-500 font-light max-w-2xl leading-relaxed">
                <div className="w-5 h-5 flex-shrink-0" /> {/* Spacer to align with text above */}
                <p>
-                 <span className="text-gray-300 font-medium">Mom&apos;z Kitchen & Growvella Innovation (UK Pilots Launching Soon).</span><br/>
-                 9 years experience in the Hospitality industry, last 4 years in the UK.
+                 <span className="text-gray-300 font-medium">Active ventures and strategic roles shaping the entrepreneurial ecosystem.</span><br/>
+                 AI Marketing • UK Pilot Launching Soon
                </p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <a 
-              href="https://wa.me/447342398858" 
+              href="https://wa.me/447342398858?text=Hi%20A.R.%20Jamil%2C%20I%27d%20like%20to%20book%20a%20strategy%20call." 
               target="_blank" rel="noopener noreferrer"
               className="w-full sm:w-auto flex items-center justify-center px-8 py-4 accent-bg text-black font-bold rounded-sm transition-opacity hover:opacity-90 uppercase text-xs tracking-widest text-center"
             >
               <PhoneCall className="w-4 h-4 mr-2" />
-              Book 1:1 Consultation
+              Book Free 1:1 Consultation
             </a>
             <a 
               href="mailto:hello@arjamil.com" 
@@ -137,10 +186,16 @@ export default function Home() {
               Email Strategy
             </a>
           </div>
-        </section>
+        </motion.section>
 
           {/* === BRAND LOGOS MARQUEE === */}
-        <section className="w-full py-10 border-y border-white/5 bg-black/40 backdrop-blur-xl relative my-8 shadow-[0_0_50px_rgba(229,255,0,0.03)] z-10">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full py-10 border-y border-white/5 bg-black/40 backdrop-blur-xl relative my-8 shadow-[0_0_50px_rgba(229,255,0,0.03)] z-10"
+        >
           <div className="absolute inset-0 bg-[#E5FF00]/[0.01] pointer-events-none" />
           <div className="w-full marquee-mask overflow-hidden flex">
             <div className="animate-marquee items-center gap-16 md:gap-24 pr-16 md:pr-24">
@@ -196,12 +251,19 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mt-16">
           
           {/* === THE "NOW" (ECOSYSTEM) SECTION === */}
-          <div id="ecosystem" className="md:col-span-12 py-12 border-t border-white/10 relative">
+          <motion.div 
+            id="ecosystem" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-12 py-12 border-t border-white/10 relative"
+          >
             <div className="mb-10">
               <h2 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">Ecosystem</h2>
               <h3 className="text-3xl font-black tracking-tight uppercase">The &quot;Now&quot;</h3>
@@ -260,20 +322,38 @@ export default function Home() {
                 <div className="mt-4"><span className="text-[9px] px-2 py-1 border border-white/10 rounded-sm uppercase tracking-widest">Brand Manager</span></div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div id="authority" className="md:col-span-7 py-8">
+          <motion.div 
+            id="authority" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-7 py-8"
+          >
             {/* === AUTHORITY & WINS === */}
             <h2 className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-4">Authority</h2>
             <section className="glass p-8 rounded-xl flex flex-col sm:flex-row items-center justify-between">
               <div className="w-full">
                 <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6">Legacy & Influence</p>
                 <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 justify-between">
-                  <div>
-                    <div className="text-3xl font-black mb-1">575K+</div>
-                    <div className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Google Views</div>
-                    <div className="text-xs text-gray-400 mt-1 italic">Level 6 Local Guide</div>
-                  </div>
+                  <a 
+                    href="https://maps.app.goo.gl/kzXR5yCDr75uwumX9" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group block transition-all"
+                  >
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <div className="text-3xl font-black group-hover:text-[#E5FF00] transition-colors">820K+</div>
+                      <ExternalLink className="w-3.5 h-3.5 text-gray-500 group-hover:text-[#E5FF00] transition-colors opacity-70 group-hover:opacity-100" />
+                    </div>
+                    <div className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Realtime Impressions</div>
+                    <div className="text-xs text-gray-400 mt-1 italic group-hover:text-gray-200 transition-colors flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-[#E5FF00]" />
+                      <span>Level 6 Local Guide</span>
+                    </div>
+                  </a>
                   <div>
                     <div className="text-3xl font-black mb-1 italic">DMU &apos;26</div>
                     <div className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Class Portfolio</div>
@@ -287,9 +367,16 @@ export default function Home() {
                 </div>
               </div>
             </section>
-          </div>
+          </motion.div>
 
-          <div id="value" className="md:col-span-5 py-8">
+          <motion.div 
+            id="value" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-5 py-8"
+          >
             {/* === DUAL-VALUE PROPOSITION === */}
             <h2 className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-4">Value Proposition</h2>
             
@@ -333,9 +420,16 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div id="content" className="md:col-span-12 py-12 border-t border-white/10 relative">
+          <motion.div 
+            id="content" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-12 py-12 border-t border-white/10 relative"
+          >
             <div className="mb-10">
               <h2 className="text-[10px] font-bold tracking-widest text-[#E5FF00] uppercase mb-2">Knowledge Base</h2>
               <h3 className="text-3xl font-black tracking-tight uppercase">Blogs &amp; E-Books</h3>
@@ -343,22 +437,50 @@ export default function Home() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               
-              {/* E-Book Highlight */}
+              {/* E-Book & Newsletter Highlight */}
               <div className="relative group lg:col-span-1 overflow-hidden border border-[#E5FF00]/20 bg-[#E5FF00]/5 rounded-lg p-6 flex flex-col justify-between hover:bg-[#E5FF00]/10 transition-colors">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                   <BookOpen className="w-24 h-24 text-[#E5FF00]" />
                 </div>
                 <div className="relative z-10">
                   <div className="inline-block px-2 py-1 bg-[#E5FF00]/20 text-[#E5FF00] border border-[#E5FF00]/30 rounded text-[10px] uppercase tracking-widest font-bold mb-4">
-                    Featured E-Book
+                    Strategies &amp; Frameworks
                   </div>
                   <h4 className="text-xl font-black text-white leading-tight mb-2">The Stealth Founder&apos;s Blueprint</h4>
-                  <p className="text-sm text-gray-400 font-light mb-6">Learn how to scale local SMEs and student-focused startups without operational bloat. A complete guide to AI-augmented growth.</p>
+                  <p className="text-sm text-gray-400 font-light mb-2">
+                    20 in-depth guides covering business, marketing, AI, and student resources. Download for free with email signup.
+                  </p>
+                  <p className="text-[10px] text-[#E5FF00] tracking-wider uppercase font-bold mb-6">
+                    Strategies, frameworks &amp; AI tips delivered to your inbox.
+                  </p>
                 </div>
-                <a href="/ebook/stealth-founder-blueprint" className="relative z-10 flex items-center justify-center w-full py-3 bg-[#E5FF00] text-black font-bold uppercase tracking-widest text-[10px] rounded hover:opacity-90 transition-opacity">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Now
-                </a>
+                <form onSubmit={handleNewsletterSubmit} className="relative z-10 flex flex-col gap-3">
+                  <input 
+                    type="email" 
+                    required
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    className="w-full bg-[#141414]/80 border border-white/10 rounded p-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#E5FF00]/50 transition-all"
+                    placeholder="Enter your email"
+                  />
+                  <button 
+                    type="submit" 
+                    disabled={newsletterStatus === "submitting" || newsletterStatus === "success"}
+                    className={`w-full flex items-center justify-center py-3 font-bold uppercase tracking-widest text-[10px] rounded transition-all
+                      ${newsletterStatus === "success" 
+                        ? "bg-green-500/20 text-green-400 border border-green-500/50" 
+                        : "bg-[#E5FF00] text-black hover:opacity-90"
+                      }`}
+                  >
+                    {newsletterStatus === "submitting" ? (
+                      <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Subscribing...</>
+                    ) : newsletterStatus === "success" ? (
+                      <><CheckCircle2 className="w-4 h-4 mr-2" /> Subscribed!</>
+                    ) : (
+                      <><Download className="w-4 h-4 mr-2" /> Download Now</>
+                    )}
+                  </button>
+                </form>
               </div>
 
               {/* Blogs Column */}
@@ -369,11 +491,11 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Student Guidance</span>
+                      <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Marketing Strategy</span>
                       <span className="text-[10px] text-gray-600 font-mono">• 5 min read</span>
                     </div>
-                    <h4 className="text-lg font-bold text-white group-hover:text-[#E5FF00] transition-colors mb-2">The Ultimate Guide to £0 Deposit Housing for Students</h4>
-                    <p className="text-xs text-gray-400 font-light line-clamp-2 mb-4">Navigating the complexities of university housing in the UK, saving money, and protecting your renting rights.</p>
+                    <h4 className="text-lg font-bold text-white group-hover:text-[#E5FF00] transition-colors mb-2">Social Media Strategy for SMEs: Realistic &amp; Actionable</h4>
+                    <p className="text-xs text-gray-400 font-light line-clamp-2 mb-4">How to leverage AI to drastically enhance your local reach, personalize marketing, and drive authentic community engagement.</p>
                     <div className="flex items-center text-[10px] font-bold uppercase tracking-widest text-[#E5FF00]">
                       Read Article <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -386,11 +508,11 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Marketing Strategy</span>
+                      <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">AI Strategy</span>
                       <span className="text-[10px] text-gray-600 font-mono">• 7 min read</span>
                     </div>
-                    <h4 className="text-lg font-bold text-white group-hover:text-[#E5FF00] transition-colors mb-2">AI-Augmented Content Strategy for Local SMEs</h4>
-                    <p className="text-xs text-gray-400 font-light line-clamp-2 mb-4">How to leverage AI to drastically enhance your local reach, personalize marketing, and drive authentic community engagement.</p>
+                    <h4 className="text-lg font-bold text-white group-hover:text-[#E5FF00] transition-colors mb-2">Automating Your Business with AI: A Practical Guide</h4>
+                    <p className="text-xs text-gray-400 font-light line-clamp-2 mb-4">Identify high-impact processes to automate and implement AI solutions that save time and money.</p>
                     <div className="flex items-center text-[10px] font-bold uppercase tracking-widest text-[#E5FF00]">
                       Read Article <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -399,9 +521,16 @@ export default function Home() {
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
-          <div id="portfolio" className="md:col-span-12 py-12 border-t border-white/10 relative">
+          <motion.div 
+            id="portfolio" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-12 py-12 border-t border-white/10 relative"
+          >
             {/* === CREATIVE WORKS & PHOTOGRAPHY === */}
             <div className="mb-10">
               <h2 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">Portfolio</h2>
@@ -477,27 +606,34 @@ export default function Home() {
               </div>
 
             </div>
-          </div>
+          </motion.div>
           
         </div>
 
         {/* === FOOTER & CTA === */}
-        <footer id="contact" className="mt-16 sm:mt-24">
+        <motion.footer 
+          id="contact" 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mt-16 sm:mt-24"
+        >
           <div className="glass p-8 md:p-12 rounded-xl relative overflow-hidden">
             <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8">
               
               {/* Left Column: Text & Socials */}
               <div className="flex flex-col justify-between">
                 <div>
-                  <h4 className="text-3xl md:text-5xl font-black mb-4 tracking-tight uppercase">Fancy a coffee <br/>in Leicester?</h4>
-                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mb-6">Let&apos;s talk strategy and creative growth.</p>
+                  <h4 className="text-3xl md:text-5xl font-black mb-4 tracking-tight uppercase">Book a free 30-minute <br/>strategy call.</h4>
+                  <p className="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold mb-6">We&apos;ll talk strategy and creative growth. Whether you&apos;re an SME or student builder.</p>
                   
                   <div className="flex flex-col gap-4 mb-10">
                     <a href="mailto:hello@arjamil.com" className="flex items-center text-sm font-light text-gray-300 hover:text-[#E5FF00] transition-colors w-fit">
                       <Mail className="w-4 h-4 mr-3 text-[#E5FF00]/70" />
                       hello@arjamil.com
                     </a>
-                    <a href="https://wa.me/447342398858" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm font-light text-gray-300 hover:text-[#E5FF00] transition-colors w-fit">
+                    <a href="https://wa.me/447342398858?text=Hi%20A.R.%20Jamil%2C%20I%27d%20like%20to%20book%20a%20strategy%20call." target="_blank" rel="noopener noreferrer" className="flex items-center text-sm font-light text-gray-300 hover:text-[#E5FF00] transition-colors w-fit">
                       <PhoneCall className="w-4 h-4 mr-3 text-[#E5FF00]/70" />
                       +44 734 239 8858 <span className="text-[10px] ml-3 border border-white/10 px-2 py-0.5 rounded-full text-gray-400 uppercase tracking-widest font-bold bg-white/5">WhatsApp / Call</span>
                     </a>
@@ -513,6 +649,7 @@ export default function Home() {
                       { icon: Youtube, href: "https://www.youtube.com/@arjamil", name: "YouTube", hoverClass: "hover:bg-[#FF0000]/20 hover:text-[#FF0000] hover:border-[#FF0000]/50" },
                       { icon: Ghost, href: "https://www.snapchat.com/arxamil", name: "Snapchat", hoverClass: "hover:bg-[#FFFC00]/20 hover:text-[#FFFC00] hover:border-[#FFFC00]/50" },
                       { icon: Pin, href: "https://www.pinterest.com/arxamill", name: "Pinterest", hoverClass: "hover:bg-[#E60023]/20 hover:text-[#E60023] hover:border-[#E60023]/50" },
+                      { icon: MapPin, href: "https://maps.app.goo.gl/kzXR5yCDr75uwumX9", name: "Google Maps Local Guide", hoverClass: "hover:bg-[#34A853]/20 hover:text-[#34A853] hover:border-[#34A853]/50" },
                       { icon: () => <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.23-.9 4.45-2.43 6.08-1.5 1.58-3.66 2.5-5.88 2.57-2.22.08-4.48-.44-6.26-1.74-1.77-1.3-3-3.32-3.31-5.5-.32-2.18.15-4.46 1.34-6.27 1.18-1.8 3.07-3.08 5.18-3.46 2.1-.38 4.31-.15 6.27.81v4.32c-1.39-.74-3.13-.96-4.66-.46-1.52.5-2.73 1.73-3.18 3.25-.45 1.53-.13 3.23.86 4.47.98 1.25 2.65 1.84 4.23 1.57 1.58-.26 2.94-1.34 3.56-2.79.62-1.46.66-3.13.6-4.7V0h3.51z"/></svg>, href: "https://www.tiktok.com/@ar_xamil", name: "TikTok", hoverClass: "hover:bg-[#00f2fe]/20 hover:text-[#00f2fe] hover:border-[#00f2fe]/50" },
                     ].map((social, i) => (
                       <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className={`flex items-center justify-center w-10 h-10 glass rounded-md transition-all duration-300 ${social.hoverClass}`}>
@@ -597,7 +734,7 @@ export default function Home() {
               A.R.J
             </div>
           </div>
-        </footer>
+        </motion.footer>
 
       </div>
     </main>
